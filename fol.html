@@ -1,0 +1,292 @@
+<html>
+<head>
+<title>FOL Evaluator</title>
+
+<!-- 
+The MIT License (MIT)
+
+FOL Evaluator
+
+Copyright (c) 2012-2017 Michael Rieppel
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+ -->
+
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript" src="fol.js"></script>
+<script type="text/javascript" src="userio.js"></script>
+
+<style type="text/css">
+
+body {
+font-family: "Open Sans", Verdana, Helvetica, sans-serif;
+color:#444444;
+height:100%;
+}
+
+a:link {color:#4B2EDE;text-decoration:none;}      /* unvisited link */
+a:visited {color:#4B2EDE;text-decoration:none;}  /* visited link */
+a:hover {color:#9D90DC;text-decoration:none;}  /* mouse over link */
+a:active {color:#FFA04D;text-decoration:none;}  /* selected link */
+
+
+#box {
+width:800px;
+margin-left:auto;
+margin-right:auto;
+font-size:14px;
+}
+
+#box table {
+font-size:14px;
+}
+
+
+#location {
+color:#999999;
+font-size:12px;
+position:absolute;
+top:5px;
+left:5px;
+}
+
+#location a {
+color:#999999;
+}
+
+
+#githublink {
+position:absolute;
+top:5px;
+right:5px;
+}
+
+
+
+#title {
+text-align:center;
+font-size:28px;
+margin-top:15px;
+margin-bottom:15px;
+}
+
+
+#model {
+list-style:none;
+padding:0px;
+margin-right:40px;
+}
+
+#model li {
+margin-bottom:10px;
+}
+
+#modeltitle {
+font-size:16px;
+margin-bottom:10px;
+}
+
+.inL{
+width:60px;
+font-family:monospace;
+font-size:medium;
+padding:3px;
+margin-right:10px;
+}
+
+.inR {
+width:300px;
+font-family:monospace;
+font-size:medium;
+padding:3px;
+}
+
+.addbutton {
+margin-left:8px;
+
+}
+
+
+#mout {
+font-family:monospace;
+border:solid 1px #B4BAEA;
+background-color:#F0F4FF;
+vertical-align: top;
+padding:5px;
+height:100%;
+width:320px;
+}
+
+
+#formuladiv {
+margin-left:auto;
+margin-right:auto;
+margin-top:2.5em;
+margin-bottom:3em;
+}
+
+#sin {
+width:400px;
+font-family:monospace;
+font-size:medium;
+padding:3px;
+margin:0px;
+}
+
+
+#sout {
+margin-left:auto;
+margin-right:auto;
+margin-top:0em;
+margin-bottom: 3em;
+font-family:monospace;
+border:solid 1px #B4BAEA;
+background-color:#F0F4FF;
+min-height:6em;
+padding:5px;
+}
+
+.info {
+margin-left:2em;
+}
+
+.info td {
+padding:3px;
+}
+
+.infohead {
+font-size:18px;
+}
+
+.infospace {
+width:50px;
+}
+
+.infolist {
+list-style:none;
+padding:0px;
+margin-left:2em;
+}
+
+#footer {
+margin-left:auto;
+margin-right:auto;
+margin-top:20px;
+width:100%;
+padding-bottom:5px;
+text-align:center;
+color:#A0A0A0;
+font-size:9pt;
+}
+
+</style>
+</head>
+<!--#B4BAEA-->
+
+<body>
+
+<div id="box">
+
+<div id='location'><a href='http://mrieppel.net/'>Home</a> &gt; <a href='http://mrieppel.net/etc.html'>&amp;c</a> &gt; <a href='truthtable.html'>FOL Evaluator</a></div>
+
+<div id='githublink'><a href='https://github.com/mrieppel/TruthTableGenerator'><img src='github.png' style="height:25px;"></a></div>
+
+<div id='title'>FOL Evaluator</div>
+
+<p>The FOL Evaluator is a semantic calculator which will evaluate a well-formed formula of first-order logic on a user-specified model and determine the formula's truth value on that model.  As part of its output, the program provides a description of the entire evaluation process used to determine the formula's truth value. A list of the symbols the program recognizes and some examples of well-formed formulas involving those symbols are included below. Click the "Sample Model" button for an example of the syntax to use when you specify your own model.</p>
+
+<br>
+
+<div id='modeltitle'>Enter a Model:</div>
+
+<table>
+<tr>
+<td>
+
+<ul id='model'>
+<li><input type="text" class="inL" readonly='readonly' value='Domain'><input type="text" class="inR" id='d'></li>
+<li><input type="text" class="inL" id='1l'><input type="text" class="inR" id='1r'></li>
+<li><input type="text" class="inL" id='2l'><input type="text" class="inR" id='2r'></li>
+<li><input type="text" class="inL" id='3l'><input type="text" class="inR" id='3r'></li>
+<li><input type="text" class="inL" id='4l'><input type="text" class="inR" id='4r'><span id='add4'><input class='addbutton' id='add4' type="button" value='+' onclick='addLine(5);'></span></li>
+</ul>
+
+</td>
+
+<td class='out' id='mout'></td>
+</tr>
+
+<tr>
+<td>
+<input type="button" value='Load Model' onclick='loadModel();'>
+<input type="button" value='Clear Model' onclick='clearModel();'>
+<input type="button" value='Sample Model' onclick='loadSample();'>
+</td><td></td>
+</tr>
+
+</table>
+
+<div id='formuladiv'><input type="text" id='sin'> <input type="button" value="Interpret!" onclick="processFormula();"> </div>
+
+
+<div class='out' id='sout'></div>
+
+
+<p>Here is a list of the symbols the program recognizes (note that since the letter 'v' is used for disjunction, it cannot be used as a variable or individual constant):<p>
+
+<table class='info'>
+<tr><td class='infohead'>Logical Symbols</td><td></td><td></td><td class='infohead'>Non-Logical Symbols</td><td></td></tr>
+<tr><td>Negation</td><td class='code'>~</td><td  class='infospace'></td><td>Individual Constants</td><td class='code'>a, b, c ... z (except v)</td></tr>
+<tr><td>Conjunction</td><td class='code'>&</td><td class='infospace'></td><td>Variables</td><td class='code'>a, b, c ... z (except v)</td></tr>
+<tr><td>Disjunction</td><td class='code'>v</td><td class='infospace'></td><td>Propositional Constants</td><td>A, B, C, ... Z</td></tr>
+<tr><td>Conditional</td><td class='code'>&gt;</td><td class='infospace'></td><td>1- and 2-Place Predicates</td><td>A, B, C, ... Z</td></tr>
+<tr><td>Biconditional</td><td class='code'>$</td><td class='infospace'></td><td></td><td></td></tr>
+<tr><td>Existential Quantifier</td><td class='code'>E</td><td class='infospace'></td><td></td><td></td></tr>
+<tr><td>Universal Quantifier</td><td class='code'>A</td><td class='infospace'></td><td></td><td></td></tr>
+<tr><td>Identity Relation</td><td class='code'>=</td><td class='infospace'></td><td></td><td></td></tr>
+<tr><td>Absurdity/Falsum</td><td class='code'>#</td><td class='infospace'></td><td></td><td></td></tr>
+
+</table>
+
+
+<p>Here are some examples of well-formed formulas the program will accept.  If you load the "sample model" above, these formulas will all successfully evaluate in that model.  In general, in order for a formula to be evaluable in a model, the model needs to assign an extension to every the non-logical constant the formula contains.</p>
+
+<ul class='infolist'>
+<li>(Fa > ~Raa)</li>
+<li>ExRxa</li>
+<li>ExAy(Rxy $ Ryx)</li>
+<li>(Ax(Fx > EyRxy) & EzRaz)</li>
+<li>AxEyx=y</li>
+<li>AxAy(x=y > (Fx > Fy))</li>
+<li>(Ex(P > Fx) > (P > ExFx))
+</ul>
+
+<p>I here always include outermost parentheses for formulas with a binary connective as the main connective, but the program will also accept formulas with these left off.  E.g. 'Fa > ~Raa' in place of '(Fa > ~Raa)'.</p>
+<br>
+
+</div> <!-- closes box -->
+
+
+<div id='footer'>&copy; 2012-2017 Michael Rieppel</div>
+
+</body>
+
+</html>
+
