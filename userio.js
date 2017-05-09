@@ -68,14 +68,6 @@ function getspaces(d) {
 	return out;
 }
 
-function getRealG(g,v) {
-	var out = {};
-	for(var i=0;i<v.length;i++) {
-		out[v[i]] = g[v[i]];
-	}
-	return out;
-}
-
 
 // Generate Model From User Input
 // ================================

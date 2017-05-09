@@ -266,6 +266,18 @@ function getSenExt(p) {
 	}
 }
 
+// Assignment, [Char] -> Assignment
+// Takes an assignment function (a JavaScript object), and an array of variables, and 
+// returns a "pruned" assignment that only stores information about assigned values
+// for the variables in the provided array.
+function getRealG(g,v) {
+	var out = {};
+	for(var i=0;i<v.length;i++) {
+		out[v[i]] = g[v[i]];
+	}
+	return out;
+}
+
 
 // Some Array Comparison Functions
 // ===============================
