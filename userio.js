@@ -122,6 +122,11 @@ function mkMdl(n,s) {
 			SENTENCES[n] = false;
 			return;
 		}
+		if(s=='') {
+			PREDICATES1[n] = [];
+			PREDICATES2[n] = [];
+			return;
+		}
 		if(ck1Ext(s)) {
 			var ext = [];
 			if(s.length>0) {
@@ -292,16 +297,18 @@ function printModel(m) {
 	var outStr = '<p><b>Loaded Model</b></p>';
 	outStr += '<ul style="list-style:none;padding:0px;"><li>Domain: '+JSON.stringify(DOMAIN)+'</li>';
 	
-	var preds = Object.keys(PREDICATES2);
-	if(preds.length>0) {
-		for(var i=0;i<preds.length;i++) {
-			outStr += '<li>'+preds[i]+': '+mkSeq(JSON.stringify(PREDICATES2[preds[i]]))+'</li>';
+	var preds2 = Object.keys(PREDICATES2);
+	if(preds2.length>0) {
+		for(var i=0;i<preds2.length;i++) {
+			outStr += '<li>'+preds2[i]+': '+mkSeq(JSON.stringify(PREDICATES2[preds2[i]]))+'</li>';
 		}
 	}
-	preds = Object.keys(PREDICATES1);
-	if(preds.length>0) {
-		for(var i=0;i<preds.length;i++) {
-			outStr += '<li>'+preds[i]+': '+JSON.stringify(PREDICATES1[preds[i]])+'</li>';
+	var preds1 = Object.keys(PREDICATES1);
+	if(preds1.length>0) {
+		for(var i=0;i<preds1.length;i++) {
+			if(preds2.indexOf(preds1[i])>=0) {
+				continue;
+			} else {outStr += '<li>'+preds1[i]+': '+JSON.stringify(PREDICATES1[preds1[i]])+'</li>';}
 		}
 	}
 	var cons = Object.keys(CONSTANTS);
