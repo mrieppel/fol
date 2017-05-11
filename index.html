@@ -212,7 +212,7 @@ font-size:9pt;
 
 <div id='title'>FOL Evaluator</div>
 
-<p>The FOL Evaluator is a semantic calculator which will evaluate a well-formed formula of first-order logic on a user-specified model.  In its output, the program provides not just the formula's truth value, but also a description of the entire evaluation process used to determine that truth value. For a list of the symbols the program recognizes and some examples of well-formed formulas involving those symbols, see below. Click the "Sample Model" button for an example of the syntax to use when you specify your own model.</p>
+<p>The FOL Evaluator is a semantic calculator which will evaluate a well-formed formula of first-order logic on a user-specified model.  In its output, the program provides not just the formula's truth value, but also a description of the evaluation process used to determine that truth value. For a list of the symbols the program recognizes and some examples of well-formed formulas involving those symbols, see below. Click the "Sample Model" button for an example of the syntax to use when you specify your own model.</p>
 
 <br>
 
@@ -247,7 +247,7 @@ font-size:9pt;
 
 <div id='formulatitle'>Enter a Formula:</div>
 
-<div id='formuladiv'><input type="text" id='sin'> <input type="button" value="Interpret!" onclick="processFormula();"> </div>
+<div id='formuladiv'><input type="text" id='sin'>&nbsp;&nbsp;<input type="button" value="Evaluate!" onclick="processFormula();"> </div>
 
 
 <div class='out' id='sout'></div>
@@ -287,7 +287,7 @@ font-size:9pt;
 <p>Notice that only binary connectives introduce parentheses, whereas quantifiers don't, so e.g. 'ExRxa' and 'Ex(Rxa & Fx)' are well-formed but 'Ex(Rxa)' is not.  In the above examples, I've left off the outermost parentheses on formulas that have a binary connective as their main connective (which the program allows).  In general, the formal grammar that the program implements for complex wffs is:</p>
 
 <ul class='infolist'>
-<li>&phi; := &nbsp;  ~&phi; | (&phi; &amp; &phi;) | (&phi; v &phi;) | (&phi; > &phi;) | (&phi; $ &phi;) | Ex&phi; | Ax&phi; |</li>
+<li>&phi; := &nbsp;  ~&phi; | (&phi; &amp; &phi;) | (&phi; v &phi;) | (&phi; > &phi;) | (&phi; $ &phi;) | E&nu;&phi; | A&nu;&phi; |</li>
 </ul>
 
 <p>One final point: if you load a model that assigns an empty extension to a predicate, the program has no way of anticipating whether you intend to use that predicate as a 1-place predicate or a 2-place predicate.  Internally it therefore adds two versions of the predicate to the model, a 1-place version and a 2-place version, each with an empty extension.  (Extensions for sentences and individual constants can't be empty, and neither can domains.)</p>
