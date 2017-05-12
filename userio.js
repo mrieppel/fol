@@ -245,6 +245,7 @@ function clearGlobals() {
 
 // Clears the model from the html interface
 function clearModel() {
+	clearGlobals();
 	document.getElementById('mout').innerHTML = '';
 	document.getElementById('sout').innerHTML = '';
 	document.getElementById('d').value = '';
