@@ -212,7 +212,7 @@ font-size:9pt;
 
 <div id='title'>FOL Evaluator</div>
 
-<p>The FOL Evaluator is a semantic calculator which will evaluate a well-formed formula of first-order logic on a user-specified model.  In its output, the program provides not just the formula's truth value, but also a description of the evaluation process used to determine that truth value. For a list of the symbols the program recognizes and some examples of well-formed formulas involving those symbols, see below. Click the "Sample Model" button for an example of the syntax to use when you specify your own model.</p>
+<p>The FOL Evaluator is a semantic calculator which will evaluate a well-formed formula of first-order logic on a user-specified model.  In its output, the program provides a description of the entire evaluation process used to determine the formula's truth value. For a list of the symbols the program recognizes and some examples of well-formed formulas involving those symbols, see below. Click the "Sample Model" button for an example of the syntax to use when you specify your own model.</p>
 
 <br>
 
@@ -282,7 +282,7 @@ font-size:9pt;
 <li>Ex(P > Fx) > (P > ExFx)</li>
 </ul>
 
-<p>If you load the "sample model" above, these formulas will all successfully evaluate in that model.  In general, in order for a formula to be evaluable in a model, the model needs to assign an extension to every the non-logical constant the formula contains.</p>
+<p>If you load the "sample model" above, these formulas will all successfully evaluate in that model.  In general, in order for a formula to be evaluable in a model, the model needs to assign an extension to every non-logical constant the formula contains.</p>
 
 <p>Notice that only binary connectives introduce parentheses, whereas quantifiers don't, so e.g. 'ExRxa' and 'Ex(Rxa & Fx)' are well-formed but 'Ex(Rxa)' is not.  In the above examples, I've left off the outermost parentheses on formulas that have a binary connective as their main connective (which the program allows).  In general, the formal grammar that the program implements for complex wffs is:</p>
 
