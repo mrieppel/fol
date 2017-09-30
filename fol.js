@@ -246,7 +246,7 @@ function mkBinDen(c,f,v) {
 		case '&' : return mkCnjDen(c,f,v);
 		case 'v' : return mkDsjDen(c,f,v);
 		case '>' : return mkCndDen(c,f,v);
-		case '$' : return mkBicDen(c,f,v);
+		case '<>' : return mkBicDen(c,f,v);
 	}
 }
 
@@ -548,7 +548,7 @@ function gSub(s) {
 // takes a string and determines if it begins with a binary connective.  If so, returns
 // the length of the connective, otherwise returns 0.
 function isB(s) {
-	var bc = ['&','v','>','$'];
+	var bc = ['&','v','>','<>'];
 	for(var i=0;i<bc.length;i++) {
 		if(s.indexOf(bc[i]) == 0) {
 			return bc[i].length;

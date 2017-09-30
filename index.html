@@ -261,7 +261,7 @@ font-size:9pt;
 <tr><td>Conjunction</td><td class='code'>&</td><td class='infospace'></td><td>Variables</td><td class='code'>a, b, c ... z (except v)</td></tr>
 <tr><td>Disjunction</td><td class='code'>v</td><td class='infospace'></td><td>Propositional Constants</td><td>A, B, C, ... Z</td></tr>
 <tr><td>Conditional</td><td class='code'>&gt;</td><td class='infospace'></td><td>1- and 2-Place Predicates</td><td>A, B, C, ... Z</td></tr>
-<tr><td>Biconditional</td><td class='code'>$</td><td class='infospace'></td><td></td><td></td></tr>
+<tr><td>Biconditional</td><td class='code'><></td><td class='infospace'></td><td></td><td></td></tr>
 <tr><td>Existential Quantifier</td><td class='code'>E</td><td class='infospace'></td><td></td><td></td></tr>
 <tr><td>Universal Quantifier</td><td class='code'>A</td><td class='infospace'></td><td></td><td></td></tr>
 <tr><td>Identity Relation</td><td class='code'>=</td><td class='infospace'></td><td></td><td></td></tr>
@@ -275,7 +275,7 @@ font-size:9pt;
 <ul class='infolist'>
 <li>Fa > ~Raa</li>
 <li>ExRxa</li>
-<li>ExAy(Rxy $ Ryx)</li>
+<li>ExAy(Rxy <> Ryx)</li>
 <li>Ax(Fx > EyRxy) & EzRaz</li>
 <li>AxEyx=y</li>
 <li>AxAy(x=y > (Fx > Fy))</li>
@@ -287,7 +287,7 @@ font-size:9pt;
 <p>Notice that only binary connectives introduce parentheses, whereas quantifiers don't, so e.g. 'ExRxa' and 'Ex(Rxa & Fx)' are well-formed but 'Ex(Rxa)' is not.  In the above examples, I've left off the outermost parentheses on formulas that have a binary connective as their main connective (which the program allows).  In general, the formal grammar that the program implements for complex wffs is:</p>
 
 <ul class='infolist'>
-<li>&phi; := &nbsp;  ~&phi; | (&phi; &amp; &phi;) | (&phi; v &phi;) | (&phi; > &phi;) | (&phi; $ &phi;) | E&nu;&phi; | A&nu;&phi; |</li>
+<li>&phi; := &nbsp;  ~&phi; | (&phi; &amp; &phi;) | (&phi; v &phi;) | (&phi; > &phi;) | (&phi; <> &phi;) | E&nu;&phi; | A&nu;&phi; |</li>
 </ul>
 
 <p>One final point: if you load a model that assigns an empty extension to a predicate, the program has no way of anticipating whether you intend to use that predicate as a 1-place predicate or a 2-place predicate.  Internally it therefore adds two versions of the predicate to the model, a 1-place version and a 2-place version, each with an empty extension.  (Extensions for sentences and individual constants can't be empty, and neither can domains.)</p>
